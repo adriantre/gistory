@@ -99,32 +99,6 @@ WSGI_APPLICATION = 'gistory.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-#         'NAME': 'webinar',
-#         'USER': 'webinar',
-#         'PASSWORD': 'webinar',
-#         'HOST': '46.101.4.130',
-#         'PORT': '',
-#         'OPTIONS': {
-#           'options': '-c search_path=adrian_gisapp,public'
-#         }
-#     },
-#     # 'default': {
-#     #     'ENGINE': 'django.contrib.gis.db.backends.postgis',
-#     #     'NAME': 'gistory',
-#     #     'USER': 'gistory',
-#     #     'PASSWORD': 'gistory13',
-#     #     'HOST': '',
-#     #     'PORT': '',
-#     #     'OPTIONS': {
-#     #       'options': '-c search_path=adrian_gisapp,public'
-#     #     }
-#     # },
-# }
-
-
 import dj_database_url
 DATABASES = {'default': dj_database_url.config()}
 DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'

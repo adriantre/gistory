@@ -21,9 +21,11 @@ body, html,
 	text-indent:15px;
 }
 
-#menu {
-    overflow: auto;
-    height: calc(100% - 160px);
+@media(min-width:768px) {
+	#menu {
+	    overflow-y: auto;
+	    max-height: calc(100% - 160px);
+	}
 }
 
 #sidebar-wrapper {
