@@ -124,12 +124,12 @@ DATABASES = {
     # },
 }
 
-DATABASE_URL = 'postgresql://webinar:webinar@46.101.4.130:5432/webinar'
+# DATABASE_URL = 'postgresql://webinar:webinar@46.101.4.130:5432/webinar'
 
-import dj_database_url
-DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
-DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
-DATABASES['default']['OPTIONS'] = {'options': '-c search_path=adrian_gisapp,public'}
+# import dj_database_url
+# DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
+# DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
+# DATABASES['default']['OPTIONS'] = {'options': '-c search_path=adrian_gisapp,public'}
 
 LEAFLET_CONFIG = {
     'DEFAULT_CENTER': (63.4205, 10.4057),
