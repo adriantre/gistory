@@ -1,1 +1,1 @@
-web: gunicorn gistory.wsgi
+web: gunicorn gistory.wsgi --log-file -
