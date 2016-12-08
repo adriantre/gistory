@@ -40,6 +40,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "node_modules"),
 ]
 
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -124,9 +126,9 @@ DATABASES = {
     #     }
     # },
 }
-# import dj_database_url
-# DATABASES['default'] =  dj_database_url.config()
-# DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
+DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
 LEAFLET_CONFIG = {
     'DEFAULT_CENTER': (63.4205, 10.4057),
