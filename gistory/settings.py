@@ -123,9 +123,9 @@ DATABASES = {
     #     }
     # },
 }
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
-DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
+# import dj_database_url
+# DATABASES['default'] =  dj_database_url.config()
+# DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
 LEAFLET_CONFIG = {
     'DEFAULT_CENTER': (63.4205, 10.4057),
