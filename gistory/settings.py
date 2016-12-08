@@ -103,7 +103,6 @@ import dj_database_url
 DATABASES = {'default': dj_database_url.config()}
 DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 DATABASES['default']['OPTIONS'] = {'options': '-c search_path=adrian_gisapp,public'}
-print DATABASES['default']
 
 LEAFLET_CONFIG = {
     'DEFAULT_CENTER': (63.4205, 10.4057),
