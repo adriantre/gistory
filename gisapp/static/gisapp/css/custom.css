@@ -1,0 +1,107 @@
+body, html,
+.container-fluid {
+	height: 100%;
+	padding-right: 0px;
+	padding-left: 0px;
+}
+.dropzone.dz-clickable {
+	position: fixed;
+	left: 0;
+	bottom: 0; 
+	background-color: #f5f5f3;
+	border-color: #337ab7;
+}
+#dropdiv.dz-default.dz-message {
+	width: 154px;
+}
+.leaflet-container a.leaflet-popup-close-button {
+	color: white;
+}
+.navbar-brand {
+	text-indent:15px;
+}
+
+#menu {
+    overflow: auto;
+    height: calc(100% - 160px);
+}
+
+#sidebar-wrapper {
+	background: #cdd2d4;
+    border-right: #337ab7 2px solid;
+}
+.sidebar-nav li a {
+    color: #333;
+}
+body .buf-desc {
+	color: #333; 
+	font-weight: normal;
+	width: 70px;
+	text-indent: 0px;
+	text-align: right;
+	margin-bottom: 0px;
+}
+#buf-in {
+	color: #999999;
+	width: 70px;
+	height: 25px;
+	text-indent: 0px;
+	text-align: center;
+	display: inline-block;
+	background: #f5f5f3;
+
+}
+#buf-but {
+	text-indent: 23px;
+    border-left: #ffff00 2px solid;
+	height: 20px;
+	line-height: 20px;
+}
+#buf-form {
+	text-indent: 0px;
+	margin-bottom: 0px;
+	line-height: 20px;
+    padding: 0;
+    line-height: 40px;
+    display: block;
+}
+#buf-but:hover {
+	text-decoration: none;
+	color: #fff;
+	background: rgba(255,255,255,0.2);
+}
+.button-li  {
+	text-indent: 10px;
+    border-left: #FF1493 2px solid;
+	height: 20px;
+	width: 70px;
+	line-height: 20px;
+}
+.button-li {
+	text-indent: 10px;
+	height: 20px;
+	width: 70px;
+	line-height: 20px;
+}
+.first {
+    border-left: #14ff80 2px solid;
+}
+.second {
+    border-left: #FF1493 2px solid;
+}
+.button-ul {
+	height:20px;
+}
+
+.feature-opt {
+	width: 100%;
+}
+
+.dialog-ul {
+    padding: 0;
+    list-style: none;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+p {
+	margin: 10px 0 0;
+}

@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+{% load leaflet_tags %}
+
+{% block head %}
+    {% leaflet_js plugins="ALL" %}
+    {% leaflet_css plugins="ALL" %}
+    <link rel="stylesheet" href="{% static 'jquery-ui-1.12.1/jquery-ui.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'gisapp/css/simple-sidebar.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'gisapp/css/dropzone.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'gisapp/css/custom.css' %}" />
+	<style media="screen">
+	    #leafmap { width:100%; height:100% }
+	</style>
+{% endblock %}
+
+{% block signout %}
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="accounts/logout"><span class="pull-right">Sign out  <i class="fa fa-sign-out"></i></span></a>
+        </li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block content %}
+	<div id="wrapper">
+		<!-- Sidebar -->
+	    <div id="sidebar-wrapper">
+            <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+ 
+                <li>
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dot-circle-o fa-stack-1x "></i></span>Buffer</a>
+                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                        <div class="form-group" id="buf-form">
+                            <label class="buf-desc" for="createbuffer">Distance:</label>
+                            <input type="text" name="buffer_distance" onfocus="if (this.value=='meter') this.value = ''" value="meter" onblur="if (this.value=='') this.value = 'meter'" class="form-control" id="buf-in">
+                        </div>
+                        <li><a href="#" id="buf-but" onclick="create_buffer('{% url 'createbuffer' %}')">Create</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onclick="create_union('{% url 'createunion' %}')"> <span class="fa-stack fa-lg pull-left"><i class="fa fa-plus fa-stack-1x"></i></span>Add together</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-minus fa-stack-1x "></i></span>Subtract</a>
+                    <ul id="sub-ul" class="button-ul nav-pills nav-inline" style="list-style-type:none;">
+                        <li><a href="#" class="button-li first" onclick="storeSelections('subtract')">First</a></li>
+                        <li><a href="#" class="button-li second" onclick="findDifference('{% url 'finddifference' %}')">Second</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" ><span class="fa-stack fa-lg pull-left"><i class="fa fa-clone fa-stack-1x "></i></span>Find intersection</a>
+                    <ul id="int-ul" class="button-ul nav-pills nav-inline" style="list-style-type:none;">
+                        <li><a href="#" class="button-li first" onclick="storeSelections('intersect')">First</a></li>
+                        <li><a href="#" class="button-li second" onclick="findIntersection('{% url 'findintersection' %}')">Second</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onclick="explode('{% url 'explode' %}')"> <span class="fa-stack fa-lg pull-left"><i class="fa fa-bomb fa-stack-1x"></i></span>Separate</a>
+                </li>
+                <p><br></p>
+                <li>
+                    <a href="#" onclick="selectAllOfSameType()"><span class="fa-stack fa-lg pull-left"><i class="fa fa-crosshairs fa-stack-1x "></i></span>Select same type</a>
+                </li>
+                <li>
+                    <a id="deselect" href="#" onclick="deSelectAllFeatures()"><span class="fa-stack fa-lg pull-left"><i class="fa fa-times fa-stack-1x "></i></span>Deselect all</a>
+                </li>
+                <li>
+                    <a href="#" onclick="hideSelected()"><span class="fa-stack fa-lg pull-left"><i class="fa fa-eye-slash fa-stack-1x "></i></span>Hide selected</a>
+                </li>
+                <li>
+                    <a id="hide" href="#" onclick="showHidden()"><span class="fa-stack fa-lg pull-left"><i class="fa fa-eye fa-stack-1x "></i></span>Show hidden</a>
+                </li>
+                <li>
+                    <a href="#" onclick="update_features('{% url 'updatefeatures' %}')"><span class="fa-stack fa-lg pull-left"><i class="fa fa-cog fa-stack-1x "></i></span>Feature properties</a>
+                </li>
+                <li>
+                    <a href="#" onclick="delete_features('{% url 'deletefeatures' %}')"><span class="fa-stack fa-lg pull-left"><i class="fa fa-trash fa-stack-1x "></i></span>Delete selected</a>
+                </li>
+            </ul>
+            <form method"post" action="{% url 'filedrop' %}" class="dropzone" id="dropzone" enctype="multipart/form-data">{% csrf_token %}</form>
+        </div><!-- /#sidebar-wrapper -->
+
+	    <!-- Page Content -->
+		<div id="page-content-wrapper">
+            <div class="container-fluid xyz">
+                {% leaflet_map "leafmap" callback="window.map_init_basic" %}
+            </div>
+            <div id="dialog" title="Helper">
+              <div id="dialogText"></div>
+            </div>
+            <div id="dialogWithConfirm" title="Helper">
+              <div id="dialogText2"></div>
+            </div>
+            <div id="dialog-form" title="Change feature properties">
+                <ul class="dialog-ul">
+                    <li><p>New name</p>
+                    <input id="new-name" class ="feature-opt" type="text"></li>
+                    <li><p>New color (Hex values e.g. #1337ad)</p>
+                    <input id="new-color" class="feature-opt" type="text"></li>
+                    <li><p>New type</p>
+                    <input id="new-type" class="feature-opt" type="text"></li>
+                </ul>
+            </div>
+            <div id="bottomOfForm"></div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+{% endblock %}
+
+
+{% block javascript %}
+	<script src = "{% static 'gisapp/js/ajax_csrf.js' %}"></script>
+    <script src = "{% static 'gisapp/js/requests.js' %}"></script>
+    <script src = "{% static 'jquery-ui-1.12.1/jquery-ui.js' %}"></script>
+    <script src = "{% static 'gisapp/js/sidebar_menu.js' %}"></script>
+    <script src = "{% static 'gisapp/js/dropzone.js' %}"></script>
+    <script src = "{% static 'spin.js/spin.min.js' %}"></script>
+    <script src = "{% static 'leaflet-spin/leaflet.spin.js' %}"></script>
+	<script src = "{% static 'gisapp/js/worldborder.js' %}"></script>
+    <script src = "{% static 'gisapp/js/layer_style.js' %}"></script>
+    <script src = "{% static 'gisapp/js/userlayers.js' %}"></script>
+	<script type="text/javascript">
+        Dropzone.options.dropzone = {
+            init: function () {
+                this.on("drop", function(event) {
+                    map.spin(true);
+                });
+                this.on("complete", function (file) {
+                    if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
+                        load_user_layers();
+                    }
+                });
+            }
+        };
+		function load_user_layers() {
+			result = getLayers("{% url 'layersgetall' %}", 
+                "{% url 'savefeaturecolors' %}");
+        }
+
+        // Prevent page to load when user press enter
+        $("#buf-in").keyup(function(event){
+            if(event.keyCode == 13){
+                $("#buf-but").click();
+            }
+        });
+
+        function map_init_basic (map, options) {
+            window.map = map;
+            map.on('click', function(e) {        
+                $('#menu li a').next().slideUp('normal');
+            });
+            load_user_layers();
+		}
+
+        function alertUser(text) {
+            $("#dialogText").text(text);
+            $(function() {
+                $("#dialog").dialog({position: { my: 'left-150', at: 'top+150' }});
+            }).prev(".ui-dialog-titlebar").css("background","#f5f5f3");
+        }
+	</script>
+{% endblock %}
