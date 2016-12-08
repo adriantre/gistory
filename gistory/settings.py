@@ -56,6 +56,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'whitenoise',
+    'dj-database-url',
 ]
 
 SITE_ID = 1
