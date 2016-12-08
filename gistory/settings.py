@@ -99,18 +99,18 @@ WSGI_APPLICATION = 'gistory.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-#         'NAME': 'webinar',
-#         'USER': 'webinar',
-#         'PASSWORD': 'webinar',
-#         'HOST': '46.101.4.130',
-#         'PORT': '',
-#         'OPTIONS': {
-#           'options': '-c search_path=adrian_gisapp,public'
-#         }
-#     },
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'webinar',
+        'USER': 'webinar',
+        'PASSWORD': 'webinar',
+        'HOST': '46.101.4.130',
+        'PORT': '',
+        'OPTIONS': {
+          'options': '-c search_path=adrian_gisapp,public'
+        }
+    },
     # 'default': {
     #     'ENGINE': 'django.contrib.gis.db.backends.postgis',
     #     'NAME': 'gistory',
@@ -122,12 +122,12 @@ WSGI_APPLICATION = 'gistory.wsgi.application'
     #       'options': '-c search_path=adrian_gisapp,public'
     #     }
     # },
-# }
+}
 
 DATABASE_URL = 'postgresql://webinar:webinar@46.101.4.130:5432/webinar'
 
 import dj_database_url
-DATABASES = {'default': dj_database_url.config(DATABASE_URL)}
+DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 DATABASES['default']['OPTIONS'] = {'options': '-c search_path=adrian_gisapp,public'}
 
