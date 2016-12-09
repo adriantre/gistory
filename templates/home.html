@@ -4,19 +4,20 @@
 {% load leaflet_tags %}
 
 {% block head %}
-{#     {% leaflet_js plugins="ALL" %}
-    {% leaflet_css plugins="ALL" %} #}
+    {% comment %}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    {% endcomment %}
+    {% leaflet_js plugins="ALL" %}
+    {% leaflet_css plugins="ALL" %}
     <link rel="stylesheet" href="{% static 'jquery-ui-1.12.1/jquery-ui.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'gisapp/css/simple-sidebar.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'gisapp/css/dropzone.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'gisapp/css/custom.css' %}" />
-	<style media="screen">
-	    #leafmap { width:100%; height:100% }
-	</style>
+    <style media="screen">
+        #leafmap { width:100%; height:100% }
+    </style>
 {% endblock %}
-
 {% block signout %}
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
@@ -87,6 +88,7 @@
 
 	    <!-- Page Content -->
 		<div id="page-content-wrapper">
+            {# <div id="leafmap" class="container-fluid xyz"> #}
             <div class="container-fluid xyz">
                 {% leaflet_map "leafmap" callback="window.map_init_basic" %}
             </div>
@@ -157,6 +159,10 @@
             });
             load_user_layers();
 		}
+
+        // var map = L.map('map').setView([63.4205, 10.4057], 13);
+
+        // L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(map);
 
         function alertUser(text) {
             $("#dialogText").text(text);

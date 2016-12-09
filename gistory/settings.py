@@ -110,12 +110,12 @@ LEAFLET_CONFIG = {
     'MIN_ZOOM': 1,
     'MAX_ZOOM': 20,
     'TILES': 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
-    # 'PLUGINS': {
-    #     'leaflet-ajax': {
-    #         'js': 'leaflet-ajax/dist/leaflet.ajax.js',
-    #         'auto-include': True,
-    #     },
-    # }
+    'PLUGINS': {
+        'leaflet-ajax': {
+            'js': 'leaflet-ajax/dist/leaflet.ajax.js',
+            'auto-include': True,
+        },
+    }
 }
 
 
