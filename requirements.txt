@@ -2,7 +2,7 @@ click==6.6
 dj-database-url==0.4.1
 Django==1.10.4
 django-allauth==0.29.0
--e git+https://github.com/makinacorpus/django-leaflet.git@2ef4671da25dac374830766d6efee801679dbc95#egg=django_leaflet
+django-leaflet==0.19.0
 Flask==0.11.1
 GDAL==1.11.2
 geos==0.1.0
