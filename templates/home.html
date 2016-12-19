@@ -12,7 +12,7 @@
     {% leaflet_js plugins="ALL" %}
     {% leaflet_css plugins="ALL" %}
     {% endcomment %}
-    <link rel="stylesheet" href="{% static 'jquery-ui-1.12.1/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'node_modules/jquery-ui-1.12.1/jquery-ui.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'gisapp/css/simple-sidebar.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'gisapp/css/dropzone.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'gisapp/css/custom.css' %}" />
@@ -125,11 +125,11 @@
 {% block javascript %}
 	<script src = "{% static 'gisapp/js/ajax_csrf.js' %}"></script>
     <script src = "{% static 'gisapp/js/requests.js' %}"></script>
-    <script src = "{% static 'jquery-ui-1.12.1/jquery-ui.js' %}"></script>
+    <script src = "{% static 'node_modules/jquery-ui-1.12.1/jquery-ui.js' %}"></script>
     <script src = "{% static 'gisapp/js/sidebar_menu.js' %}"></script>
     <script src = "{% static 'gisapp/js/dropzone.js' %}"></script>
-    <script src = "{% static 'spin.js/spin.min.js' %}"></script>
-    <script src = "{% static 'leaflet-spin/leaflet.spin.js' %}"></script>
+    <script src = "{% static 'node_modules/spin.js/spin.min.js' %}"></script>
+    <script src = "{% static 'node_modules/leaflet-spin/leaflet.spin.js' %}"></script>
 	<script src = "{% static 'gisapp/js/worldborder.js' %}"></script>
     <script src = "{% static 'gisapp/js/layer_style.js' %}"></script>
     <script src = "{% static 'gisapp/js/userlayers.js' %}"></script>

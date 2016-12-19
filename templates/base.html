@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Gistory</title>
         <!-- Core CSS - Include with every page -->
-        <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/dist/css/bootstrap.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}" />
         {% block head %}
@@ -28,9 +28,9 @@
         {% endblock %}
 
         <!-- Core Scripts - Include with every page -->
-        <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
-        <script src = "{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
-        <script src = "{% static 'underscore/underscore.js' %}"></script>
+        <script src="{% static 'node_modules/jquery/dist/jquery.min.js' %}"></script>
+        <script src = "{% static 'node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+        <script src = "{% static 'node_modules/underscore/underscore.js' %}"></script>
         
         {% block javascript %}
         {% endblock %}
