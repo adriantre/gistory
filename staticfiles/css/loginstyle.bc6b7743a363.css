@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    text-align : center;
+    font-family: "SIMPSON";
+}
+h2 {
+    text-align : center;
+    font-family: "SIMPSON";
+    font-size: 150%;
+}
+form {
+    width: 280px;
+    margin: 0 auto;
+}
+input {
+	float:right;
+	clear:both;
+}
