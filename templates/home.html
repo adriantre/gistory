@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 
 {% load staticfiles %}
+{% comment %}
 {% load leaflet_tags %}
+{% endcomment %}
 
 {% block head %}
-    {% comment %}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
-    {% endcomment %}
+    {% comment %}
     {% leaflet_js plugins="ALL" %}
     {% leaflet_css plugins="ALL" %}
+    {% endcomment %}
     <link rel="stylesheet" href="{% static 'jquery-ui-1.12.1/jquery-ui.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'gisapp/css/simple-sidebar.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'gisapp/css/dropzone.css' %}" />
@@ -90,7 +92,11 @@
 		<div id="page-content-wrapper">
             {# <div id="leafmap" class="container-fluid xyz"> #}
             <div class="container-fluid xyz">
+                {% comment %}
                 {% leaflet_map "leafmap" callback="window.map_init_basic" %}
+                }
+                {% endcomment %}
+                <div id='leafmap'></div>
             </div>
             <div id="dialog" title="Helper">
               <div id="dialogText"></div>
@@ -151,6 +157,19 @@
                 $("#buf-but").click();
             }
         });
+
+        $( document ).ready(function() {
+            var map = L.map('leafmap').setView([63.4205, 10.4057], 13);
+            window.map = map;
+            L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+                maxZoom: 20,
+            }).addTo(map);
+            map.on('click', function(e) {        
+                $('#menu li a').next().slideUp('normal');
+            });
+            load_user_layers();
+        });
+
 
         function map_init_basic (map, options) {
             window.map = map;

@@ -24,7 +24,7 @@ SECRET_KEY = 'd2=la+ljr-$utpfbws=4o)u1ycr92d4&s!rn=dtl@6^m&4(&yy'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = ['gistory-hero.herokuapp.com', 'localhost']
 
@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.gis',
     'django.contrib.sites',
     'gisapp',
-    'leaflet',
+    # 'leaflet',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -104,19 +104,20 @@ DATABASES = {'default': dj_database_url.config()}
 DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 DATABASES['default']['OPTIONS'] = {'options': '-c search_path=adrian_gisapp,public'}
 
-LEAFLET_CONFIG = {
-    'DEFAULT_CENTER': (63.4205, 10.4057),
-    'DEFAULT_ZOOM': 13,
-    'MIN_ZOOM': 1,
-    'MAX_ZOOM': 20,
-    'TILES': 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
-    'PLUGINS': {
-        'leaflet-ajax': {
-            'js': 'leaflet-ajax/dist/leaflet.ajax.js',
-            'auto-include': True,
-        },
-    }
-}
+
+# LEAFLET_CONFIG = {
+#     'DEFAULT_CENTER': (63.4205, 10.4057),
+#     'DEFAULT_ZOOM': 13,
+#     'MIN_ZOOM': 1,
+#     'MAX_ZOOM': 20,
+#     'TILES': 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+#     'PLUGINS': {
+#         'leaflet-ajax': {
+#             'js': 'leaflet-ajax/dist/leaflet.ajax.js',
+#             'auto-include': True,
+#         },
+#     }
+# }
 
 
 
