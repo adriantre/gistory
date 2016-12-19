@@ -26,7 +26,7 @@ SECRET_KEY = 'd2=la+ljr-$utpfbws=4o)u1ycr92d4&s!rn=dtl@6^m&4(&yy'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['gistory-hero.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['www.gistory-hero.herokuapp.com']
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
