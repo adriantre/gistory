@@ -154,7 +154,7 @@
         $( document ).ready(function() {
             var map = L.map('leafmap').setView([63.4205, 10.4057], 13);
             window.map = map;
-            tiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+            tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
                 maxZoom: 20,
             });
             tiles.setZIndex(0);
