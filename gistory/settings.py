@@ -24,9 +24,10 @@ SECRET_KEY = 'd2=la+ljr-$utpfbws=4o)u1ycr92d4&s!rn=dtl@6^m&4(&yy'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
-ALLOWED_HOSTS = ['gistory-hero.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['gistory-hero.herokuapp.com']
+# ALLOWED_HOSTS = ['localhost']
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
@@ -100,38 +101,10 @@ WSGI_APPLICATION = 'gistory.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-# import dj_database_url
-# DATABASES = {'default': dj_database_url.config()}
-# DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
-# DATABASES['default']['OPTIONS'] = {'options': '-c search_path=adrian_gisapp,public'}
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'webinar',
-        'USER': 'webinar',
-        'PASSWORD': 'webinar',
-        'HOST': '46.101.4.130',
-        'PORT': '',
-        'OPTIONS': {
-          'options': '-c search_path=adrian_gisapp,public'
-        }
-    },
-}
-
-# LEAFLET_CONFIG = {
-#     'DEFAULT_CENTER': (63.4205, 10.4057),
-#     'DEFAULT_ZOOM': 13,
-#     'MIN_ZOOM': 1,
-#     'MAX_ZOOM': 20,
-#     'TILES': 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
-#     'PLUGINS': {
-#         'leaflet-ajax': {
-#             'js': 'leaflet-ajax/dist/leaflet.ajax.js',
-#             'auto-include': True,
-#         },
-#     }
-# }
+import dj_database_url
+DATABASES = {'default': dj_database_url.config()}
+DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
+DATABASES['default']['OPTIONS'] = {'options': '-c search_path=adrian_gisapp,public'}
 
 
 

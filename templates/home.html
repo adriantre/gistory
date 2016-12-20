@@ -161,7 +161,9 @@
             tiles.addTo(map);
 
             map.on('click', function(e) {
-                $('#menu li a').next().slideUp('normal');
+                if (storedSelections.length == 0) {
+                    $('#menu li a').next().slideUp('normal');
+                }
             });
             load_user_layers();
         });
